@@ -1,0 +1,27 @@
+{
+  "name": "@nyxb/wizard-typescript-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "translate": "dynot scripts/translate.ts",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
+    "test": "turbo run test",
+    "extension:build": "turbo run vscode:build",
+    "release": "turbo run publish:vsce publish:ovsx && node ./scripts/tag-extension.js",
+    "parser:dev": "turbo run dev --filter *parser"
+  },
+  "devDependencies": {
+    "@nyxb/eslint-config": "0.0.53",
+    "@types/node": "^20.2.5",
+    "consolji": "^0.1.4",
+    "dynot": "^0.1.8",
+    "turbo": "^1.9.9",
+    "typescript": "^5.0.4"
+  }
+}

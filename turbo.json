@@ -1,0 +1,38 @@
+{
+  "pipeline": {
+    "vscode:build": {
+      "dependsOn": ["bundle-errors"],
+      "cache": false
+    },
+    "build": {
+      "cache": false
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "bundle-errors": {
+      "outputs": [],
+      "cache": false
+    },
+    "vscode:package": {
+      "dependsOn": ["vscode:build"],
+      "cache": false
+    },
+    "publish:vsce": {
+      "dependsOn": ["vscode:package"],
+      "outputs": [],
+      "cache": false
+    },
+    "publish:ovsx": {
+      "dependsOn": ["vscode:package", "publish:vsce"],
+      "outputs": [],
+      "cache": false
+    }
+  }
+}

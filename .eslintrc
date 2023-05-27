@@ -1,0 +1,9 @@
+{
+   "extends": ["@nyxb"],
+   "rules": {
+     "promise/param-names": 0,
+     "@typescript-eslint/ban-ts-comment": 0,
+     "no-lone-blocks": 0,
+     "unused-imports/no-unused-vars": 0
+   }
+}

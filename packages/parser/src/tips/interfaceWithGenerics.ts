@@ -1,0 +1,34 @@
+import { z } from 'zod'
+import { createTip } from '../createTip'
+import { SourceLocationSchema, safeParse } from '../utils'
+
+const Schema = z.object({
+   loc: SourceLocationSchema,
+   typeParameters: z.object({
+      loc: SourceLocationSchema,
+      params: z
+         .array(
+            z.object({
+               type: z.literal('TSTypeParameter'),
+            }),
+         )
+         .min(1),
+   }),
+})
+
+export const interfaceWithGenerics = createTip(
+   'interface-with-generics',
+   (push) => {
+      return {
+         TSInterfaceDeclaration(path) {
+            safeParse(() => {
+               const node = Schema.parse(path.node)
+               push({
+                  type: 'interface-with-generics',
+                  loc: node.typeParameters.loc,
+               })
+            })
+         },
+      }
+   },
+)
