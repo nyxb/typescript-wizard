@@ -2,8 +2,8 @@ import * as fs from 'node:fs/promises'
 import * as path from 'node:path'
 import fm from 'front-matter'
 
-async function bundleErrors() {
-   const dir = path.resolve(__dirname, '../../../packages/engine/errors')
+async function bundleErrors(language: string) {
+   const dir = path.resolve(__dirname, `../../../packages/engine/errors/${language}`)
 
    const allFiles = (await fs.readdir(dir)).map(file => ({
       fullPath: path.resolve(dir, file),
@@ -32,12 +32,19 @@ async function bundleErrors() {
    }
 
    await fs.writeFile(
-      path.resolve(__dirname, './bundleErrors.json'),
+      path.resolve(__dirname, `./bundleErrors_${language}.json`),
       JSON.stringify(json, null, 2),
    )
 }
 
-bundleErrors().catch((e) => {
+// Erstelle bundleErrors.json für "en" (Englisch)
+bundleErrors('en').catch((e) => {
+   console.error(e)
+   process.exit(1)
+})
+
+// Erstelle bundleErrors.json für "de" (Deutsch)
+bundleErrors('de').catch((e) => {
    console.error(e)
    process.exit(1)
 })
