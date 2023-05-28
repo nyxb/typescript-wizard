@@ -12,7 +12,7 @@ export function showBeginnerQuestion() {
             return
 
          vscode.workspace
-            .getConfiguration('wizardTypeScript')
+            .getConfiguration('typeScriptWizard')
             .update(
                'hideBasicTips',
                res === 'No',
