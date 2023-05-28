@@ -14,7 +14,7 @@ const tag = `${pkgJson.name}@${pkgJson.version}`
 
 const { status, stdout } = spawnSync('git', [
    'ls-remote',
-   'https://github.com/mattpocock/ts-error-translator.git',
+   'https://github.com/nyxblabs/typescript-wizard.git',
    tag,
 ])
 
