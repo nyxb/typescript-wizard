@@ -166,12 +166,12 @@ export default function Web(props: { error: string; errors: ErrorInfo[]; lang: s
                     <>
                       <h2 className='text-nice-yellow'>{t('translation')}</h2>
                       <div className='p-4 py-3 font-light text-gray-100 bg-gray-800 rounded prose-code:text-white prose-p:m-0'>
-                        <ReactMarkdown>
+                        <ReactMarkdown className='text=white'>
                           {error.improvedError.excerpt}
                         </ReactMarkdown>
                       </div>
                        <h2 className='text-nice-yellow'>{t('explanation')}</h2>
-                      <ReactMarkdown>{error.improvedError?.body}</ReactMarkdown>
+                      <ReactMarkdown className='text=white'>{error.improvedError?.body}</ReactMarkdown>
                     </>
                   )}
                   {!error.improvedError && (
