@@ -1,30 +1,54 @@
-## Getting Started
+# 🚀 TypeScript Wizard Web Application
 
-First, run the development server:
+This is a web application for the TypeScript Wizard project.
 
-```bash
-yarn dev
-```
+## 🔧 Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js version installed, [latest LTS is recommended](https://nodejs.org/en/about/releases/)
+- Install [nyxi](https://github.com/nyxblabs/nyxi)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## ❤️‍🔥 Getting Started
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+To start developing, follow these steps:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. :octocat: Clone the repository:
 
-## Learn More
+   ```sh
+   git clone https://github.com/nyxblabs/typescript-wizard.git
+   cd typescript-wizard
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. 📦 Install the dependencies for all the packages:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```sh
+   nyxi
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. 🏃‍♂️ Run the web application:
 
-## Deploy on Vercel
+   ```sh
+   nyxr dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_source=github.com&utm_medium=referral&utm_campaign=turborepo-readme) from the creators of Next.js.
+## ✏️ Adding/Editing Error Translations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can find all of the error translations in the `packages/engine/errors` directory. Each error has its own file named with the error code.
+
+To add or edit a translation:
+
+1. 🔎 Locate the corresponding error code file, e.g., `packages/engine/errors/<code>.md`.
+
+2. ✏️ Modify the translation as needed.
+
+> 💡 To find the error code you're looking for, you can refer to the [`tsErrorMessages.json`](https://github.com/nyxblabs/typescript-wizard/blob/main/packages/engine/src/tsErrorMessages.json) file or check the console for the error message format: `error TS<code>: <msg>`.
+
+## 📗 Translation Style Guide
+
+When translating error messages, follow these guidelines:
+
+- 🗨️ Use a conversational and direct tone, as if you were the compiler addressing the user.
+- 📢 Speak to the user directly, keeping the explanations concise and easy to understand.
+- ❎ Avoid using `{0}` and `{1}` placeholders in excerpts to ensure readability.
+- 🌐 Provide translations in multiple languages. Currently, English and German translations are available.
+
+🎉 Happy contributing!
