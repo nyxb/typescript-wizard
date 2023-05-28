@@ -8,6 +8,9 @@ import { compressToEncodedURIComponent } from 'lz-string'
 import type { Options } from './types'
 import * as bundleErrorsEn from './bundleErrors_en.json'
 import * as bundleErrorsDe from './bundleErrors_de.json'
+import { getCurrentLanguage } from './language'
+
+const currentLanguage = getCurrentLanguage
 
 function getMessageTemplate(options: Options) {
    let messageTemplate: 'body-and-tldr' | 'tldr-only' | 'body-only' | 'link-only'
@@ -68,9 +71,14 @@ export function humaniseDiagnostic(
 
          const messageTemplate = getMessageTemplate(options)
 
-         const linkToTranslation = `[See full translation](https://typescript-wizard.vercel.app/?error=${compressToEncodedURIComponent(
+         const SeeFullTranslation = {
+            en: 'See full translation',
+            de: 'Siehe vollständige Übersetzung',
+         }
+
+         const linkToTranslation = `[${SeeFullTranslation[currentLanguage()]}](https://typescript-wizard.vercel.app/?error=${compressToEncodedURIComponent(
             diagnostic.message,
-         )})`
+         )}&lang=${language})`
 
          switch (messageTemplate) {
                   case 'body-and-tldr': {
