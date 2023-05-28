@@ -1,0 +1,13 @@
+{
+   "title": "TypeScript Wizard",
+   "description": "Translate TypeScript Errors to plain English",
+   "headerSubtitle": "TypeScript errors in Plain English",
+   "headerTitle": "Typescript Wizard",
+   "submit": "Submit your Error",
+   "error": "Error",
+   "translation": "Translation",
+   "explanation": "Explanation",
+   "notFind": "Could not find a translation for error code",
+   "add": "Add a translation",
+   "errorText": "Conversion of type 'string' to type 'string[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first."
+}

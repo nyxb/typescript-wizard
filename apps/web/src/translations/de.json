@@ -1,0 +1,13 @@
+{
+   "title": "TypeScript Wizard",
+   "description": "Übersetze TypeScript-Fehler ins einfache Deutsch",
+   "headerSubtitle": "TypeScript-Fehler in einfachem Deutsch",
+   "headerTitle": "Typescript Wizard",
+   "submit": "Fehler melden",
+   "error": "Fehler",
+   "translation": "Übersetzung",
+   "explanation": "Erläuterung",
+   "notFind": "Für den Fehlercode konnte keine Übersetzung gefunden werden",
+   "add": "Eine Übersetzung hinzufügen",
+   "errorText": "Die Umwandlung vom Typ 'string' in den Typ 'string[]' könnte ein Fehler sein, da sich die beiden Typen nicht ausreichend überschneiden. Wenn dies beabsichtigt war, konvertiere den Ausdruck zuerst in 'unknown'."
+}
