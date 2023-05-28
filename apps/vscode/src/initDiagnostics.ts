@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import { defaultOptions } from './defaultOptions'
 import { humaniseDiagnostic } from './humaniseDiagnostic'
+import { getCurrentLanguage } from './language'
 
 let options = defaultOptions
 
@@ -26,7 +27,7 @@ export function initDiagnostics(context: vscode.ExtensionContext) {
    const updateOptions = () => {
       options = {
          ...defaultOptions,
-         ...vscode.workspace.getConfiguration('wizardTypeScript'),
+         ...vscode.workspace.getConfiguration('typeScriptWizard'),
       }
    }
 
@@ -34,7 +35,7 @@ export function initDiagnostics(context: vscode.ExtensionContext) {
 
    context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((config) => {
-         if (config.affectsConfiguration('wizardTypeScript'))
+         if (config.affectsConfiguration('typeScriptWizard'))
             updateOptions()
       }),
    )
@@ -74,7 +75,8 @@ export function initDiagnostics(context: vscode.ExtensionContext) {
                contents: vscode.MarkdownString[]
             }[] = []
             diagnostics.forEach((diagnostic) => {
-               const humanizedVersion = humaniseDiagnostic(diagnostic, options)
+               const currentLang = getCurrentLanguage()
+               const humanizedVersion = humaniseDiagnostic(diagnostic, options, currentLang)
 
                if (humanizedVersion) {
                   items.push({
