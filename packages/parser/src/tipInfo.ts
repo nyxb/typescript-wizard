@@ -8,6 +8,7 @@ interface LanguageObject {
 }
 
 export interface TipInfoItem<Type extends Tip['type'] = Tip['type']> {
+   typeName: LanguageObject
    name: LanguageObject
    message: LanguageObject
    deps?: MaybeArray<Exclude<Tip['type'], Type>>
@@ -21,6 +22,10 @@ export type TipInfo = {
 
 export const tipInfo: TipInfo = {
    'bigint': {
+      typeName: {
+         en: 'BigInt',
+         de: 'BigInt',
+      },
       name: {
          en: 'BigInt type',
          de: 'BigInt-Typ',
@@ -33,6 +38,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'as-const': {
+      typeName: {
+         en: 'as-const',
+         de: 'as-const (Als-Konstante)',
+      },
       name: {
          en: 'const assertions',
          de: 'Konstanten-Assertions',
@@ -45,6 +54,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions',
    },
    'as-const-on-object': {
+      typeName: {
+         en: 'as-const-on-object',
+         de: 'as-const-on-object (Als-Konstante-auf-Objekt)',
+      },
       name: {
          en: 'const assertions on objects',
          de: 'Konstanten-Assertions auf Objekten',
@@ -58,6 +71,10 @@ export const tipInfo: TipInfo = {
       deps: ['as-const'],
    },
    'infer': {
+      typeName: {
+         en: 'infer',
+         de: 'infer (ableiten)',
+      },
       name: {
          en: 'Infer keyword',
          de: 'Infer-Schlüsselwort',
@@ -71,6 +88,10 @@ export const tipInfo: TipInfo = {
       deps: ['conditional-type'],
    },
    'basic-types': {
+      typeName: {
+         en: 'basic-types',
+         de: 'basic-types (Grundlegende Typen)',
+      },
       name: {
          en: 'Basic Types',
          de: 'Grundlegende Typen',
@@ -83,6 +104,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#the-primitives-string-number-and-boolean',
    },
    'awaited-utility-type': {
+      typeName: {
+         en: 'awaited-utility-type',
+         de: 'awaited-utility-type (Erwarteter Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Awaited utility type',
@@ -96,6 +121,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#awaitedtype',
    },
    'partial-utility-type': {
+      typeName: {
+         en: 'partial-utility-type',
+         de: 'partial-utility-type (Teilweiser Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Partial utility type',
@@ -109,6 +138,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
    },
    'required-utility-type': {
+      typeName: {
+         en: 'required-utility-type',
+         de: 'required-utility-type (Erforderlicher Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Required utility type',
@@ -122,6 +155,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#requiredtype',
    },
    'readonly-utility-type': {
+      typeName: {
+         en: 'readonly-utility-type',
+         de: 'readonly-utility-type (Schreibgeschützter Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Readonly utility type',
@@ -135,6 +172,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype',
    },
    'omit-utility-type': {
+      typeName: {
+         en: 'omit-utility-type',
+         de: 'omit-utility-type (Auslassender Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Omit utility type',
@@ -148,6 +189,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys',
    },
    'exclude-utility-type': {
+      typeName: {
+         en: 'exclude-utility-type',
+         de: 'exclude-utility-type (Ausschließender Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Exclude utility type',
@@ -161,6 +206,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#excludeuniontype-excludedmembers',
    },
    'extract-utility-type': {
+      typeName: {
+         en: 'extract-utility-type',
+         de: 'extract-utility-type (Extrahierender Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Extract utility type',
@@ -174,6 +223,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#extracttype-union',
    },
    'nonnullable-utility-type': {
+      typeName: {
+         en: 'nonnullable-utility-type',
+         de: 'nonnullable-utility-type (Nicht-Null-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'NonNullable utility type',
@@ -187,6 +240,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype',
    },
    'record-utility-type': {
+      typeName: {
+         en: 'record-utility-type',
+         de: 'record-utility-type (Aufzeichnungs-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Record utility type',
@@ -200,6 +257,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
    },
    'returntype-utility-type': {
+      typeName: {
+         en: 'returntype-utility-type',
+         de: 'returntype-utility-type (Rückgabetyp-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'ReturnType utility type',
@@ -213,6 +274,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype',
    },
    'lowercase-utility-type': {
+      typeName: {
+         en: 'lowercase-utility-type',
+         de: 'lowercase-utility-type (Kleinbuchstaben-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Lowercase utility type',
@@ -226,6 +291,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#lowercasestringtype',
    },
    'uppercase-utility-type': {
+      typeName: {
+         en: 'uppercase-utility-type',
+         de: 'uppercase-utility-type (Großbuchstaben-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Uppercase utility type',
@@ -239,6 +308,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#uppercasestringtype',
    },
    'parameters-utility-type': {
+      typeName: {
+         en: 'parameters-utility-type',
+         de: 'parameters-utility-type (Parameter-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Parameters utility type',
@@ -252,6 +325,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype',
    },
    'pick-utility-type': {
+      typeName: {
+         en: 'pick-utility-type',
+         de: 'pick-utility-type (Auswahl-Hilfstyp)',
+      },
       deps: 'passing-generics-to-types',
       name: {
          en: 'Pick utility type',
@@ -265,6 +342,10 @@ export const tipInfo: TipInfo = {
       link: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys',
    },
    'any-type': {
+      typeName: {
+         en: 'any-type',
+         de: 'any-type (beliebiger Datentyp)',
+      },
       name: {
          en: 'Any Type',
          de: 'Any-Typ',
@@ -277,6 +358,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'array-type': {
+      typeName: {
+         en: 'array-type',
+         de: 'array-type (Array-Datentyp)',
+      },
       name: {
          en: 'Array type',
          de: 'Array-Typ',
@@ -311,6 +396,10 @@ export const tipInfo: TipInfo = {
    // },
 
    'passing-generics-to-types': {
+      typeName: {
+         en: 'passing-generics-to-types',
+         de: 'passing-generics-to-types (Übergeben von Generics an Typen)',
+      },
       name: {
          en: 'Passing Types to other Types',
          de: 'Übergabe von Typen an andere Typen',
@@ -334,6 +423,10 @@ export const tipInfo: TipInfo = {
    //    deps: ['passing-generics-to-types'],
    // },
    'type-alias-with-generics': {
+      typeName: {
+         en: 'type-alias-with-generics',
+         de: 'type-alias-with-generics (Typalias mit Generics)',
+      },
       name: {
          en: 'Generics in types',
          de: 'Generics in Typen',
@@ -347,6 +440,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'type-alias-with-multiple-generics': {
+      typeName: {
+         en: 'type-alias-with-multiple-generics',
+         de: 'type-alias-with-multiple-generics (Typalias mit mehreren Generics)',
+      },
       name: {
          en: 'Multiple generics in types',
          de: 'Mehrere Generics in Typen',
@@ -360,6 +457,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'tuple-type': {
+      typeName: {
+         en: 'tuple-type',
+         de: 'tuple-type (Tupel-Typ)',
+      },
       name: {
          en: 'Tuple type',
          de: 'Tuple-Typ',
@@ -382,6 +483,10 @@ export const tipInfo: TipInfo = {
    //    },
    // },
    'function-return-type': {
+      typeName: {
+         en: 'function-return-type',
+         de: 'function-return-type (Funktion-Rückgabetyp)',
+      },
       name: {
          en: 'Function return type',
          de: 'Rückgabetyp einer Funktion',
@@ -394,6 +499,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'union-type': {
+      typeName: {
+         en: 'union-type',
+         de: 'union-type (Vereinigungstyp)',
+      },
       name: {
          en: 'Union type',
          de: 'Unionstyp',
@@ -406,6 +515,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'as-assertion': {
+      typeName: {
+         en: 'as-assertion',
+         de: 'as-assertion (Typ-Zuweisung)',
+      },
       name: {
          en: '\'as\' Type assertion',
          de: '\'as\' Typ-Assertion',
@@ -418,6 +531,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'ts-object-type': {
+      typeName: {
+         en: 'ts-object-type',
+         de: 'ts-object-type (Typ für Objekte in TypeScript)',
+      },
       name: {
          en: 'Object type',
          de: 'Objekttyp',
@@ -430,6 +547,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'type-predicate': {
+      typeName: {
+         en: 'type-predicate',
+         de: 'type-predicate (Typ-Prädikat)',
+      },
       name: {
          en: 'Type predicate',
          de: 'Typ-Predicate',
@@ -442,6 +563,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'interface-declaration': {
+      typeName: {
+         en: 'interface-declaration',
+         de: 'interface-declaration (Schnittstellen-Deklaration)',
+      },
       name: {
          en: 'Interface declaration',
          de: 'Interface-Deklaration',
@@ -454,9 +579,13 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'never-keyword': {
+      typeName: {
+         en: 'never-keyword',
+         de: 'never-keyword (niemals-Schlüsselwort)',
+      },
       name: {
          en: 'Never keyword',
-         de: 'Never-Schlüsselwort',
+         de: 'Niemals-Schlüsselwort',
       },
       message: {
          en: 'This is the never keyword. It\'s a way to represent the type of something that should never occur.',
@@ -466,6 +595,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'in-operator-narrowing': {
+      typeName: {
+         en: 'in-operator-narrowing',
+         de: 'in-operator-narrowing (In-Operator-Verengung)',
+      },
       name: {
          en: 'In operator narrowing',
          de: 'Typverengung mit dem \'in\'-Operator',
@@ -478,6 +611,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'non-null-expression': {
+      typeName: {
+         en: 'non-null-expression',
+         de: 'non-null-expression (Nicht-null-Ausdruck)',
+      },
       name: {
          en: 'Non-null expression',
          de: 'Non-null-Ausdruck',
@@ -490,6 +627,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'null-keyword': {
+      typeName: {
+         en: 'null-keyword',
+         de: 'null-keyword (Null-Schlüsselwort)',
+      },
       name: {
          en: 'Null keyword',
          de: 'Null-Schlüsselwort',
@@ -502,18 +643,26 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'undefined-keyword': {
+      typeName: {
+         en: 'undefined-keyword',
+         de: 'undefined-keyword (Undifiniert-Schlüsselwort)',
+      },
       name: {
          en: 'Undefined keyword',
-         de: 'Undefined-Schlüsselwort',
+         de: 'Undifiniert-Schlüsselwort',
       },
       message: {
          en: 'This is the undefined keyword. It\'s a way to represent the type of undefined.',
-         de: 'Dies ist das Undefined-Schlüsselwort. Es repräsentiert den Typ undefined.',
+         de: 'Dies ist das Undifiniert-Schlüsselwort. Es repräsentiert den Typ undefined (nicht definiert).',
       },
       link: 'https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#null-and-undefined',
       difficulty: 'easy',
    },
    'literal-type': {
+      typeName: {
+         en: 'literal-type',
+         de: 'literal-type (Literaltyp)',
+      },
       name: {
          en: 'Literal type',
          de: 'Literaltyp',
@@ -526,6 +675,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'optional-object-property': {
+      typeName: {
+         en: 'optional-object-property',
+         de: 'optional-object-property (optionale-Objekteigenschaft)',
+      },
       name: {
          en: 'Optional Object Property',
          de: 'Optionale Objekteigenschaft',
@@ -538,6 +691,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'readonly-object-property': {
+      typeName: {
+         en: 'readonly-object-property',
+         de: 'readonly-object-property (schreibgeschützte-Objekteigenschaft)',
+      },
       name: {
          en: 'Readonly Object Property',
          de: 'Schreibgeschützte Objekteigenschaft',
@@ -550,6 +707,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'type-alias-declaration': {
+      typeName: {
+         en: 'type-alias-declaration',
+         de: 'type-alias-declaration (Typalias-Deklaration)',
+      },
       name: {
          en: 'Type Keyword',
          de: 'Typschlüsselwort',
@@ -562,6 +723,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'variable-type-annotation': {
+      typeName: {
+         en: 'variable-type-annotation',
+         de: 'variable-type-annotation (Variablentyp-Annotation)',
+      },
       name: {
          en: 'Variable type annotation',
          de: 'Variablentypannotation',
@@ -574,6 +739,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'typing-function-parameters': {
+      typeName: {
+         en: 'typing-function-parameters',
+         de: 'typing-function-parameters (Typisierung-von-Funktionsparametern)',
+      },
       name: {
          en: 'Function parameter type annotation',
          de: 'Typisierung von Funktionsparametern',
@@ -586,6 +755,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'easy',
    },
    'conditional-type': {
+      typeName: {
+         en: 'conditional-type',
+         de: 'conditional-type (Bedingter-Typ)',
+      },
       name: {
          en: 'Conditional type',
          de: 'Bedingter Typ',
@@ -598,6 +771,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'nested-conditional-type': {
+      typeName: {
+         en: 'nested-conditional-type',
+         de: 'nested-conditional-type (Verschachtelter-bedingter-Typ)',
+      },
       name: {
          en: 'Nested conditional type',
          de: 'Verschachtelter bedingter Typ',
@@ -611,9 +788,13 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'k-in-keyof': {
+      typeName: {
+         en: 'k-in-keyof',
+         de: 'k-in-keyof (Schlüssel-in-Schlüssel-von)',
+      },
       name: {
          en: 'keyof in Mapped Types',
-         de: 'keyof in Mapped Types',
+         de: 'keyof in Mapped Types (Schlüssel in abgebildeten Typen)',
       },
       deps: ['mapped-type'],
       message: {
@@ -624,9 +805,13 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'keyof': {
+      typeName: {
+         en: 'keyof',
+         de: 'keyof (Schlüssel-von)',
+      },
       name: {
          en: 'keyof',
-         de: 'keyof',
+         de: 'keyof (Schlüssel-von)',
       },
       message: {
          en: 'The keyof operator takes a type and returns a union of its keys.',
@@ -636,9 +821,13 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'typeof': {
+      typeName: {
+         en: 'typeof',
+         de: 'typeof (Typ-von)',
+      },
       name: {
          en: 'typeof',
-         de: 'typeof',
+         de: 'typeof (Typ-von)',
       },
       message: {
          en: 'The typeof operator can be used to infer the type of a runtime construct.',
@@ -648,18 +837,26 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'generic-slots-in-functions': {
+      typeName: {
+         en: 'generic-slots-in-functions',
+         de: 'generic-slots-in-functions (Generische-Plätze-in-Funktionen)',
+      },
       name: {
          en: 'Generics in functions',
-         de: 'Generics in Funktionen',
+         de: 'Generische-Plätze-in-Funktionen',
       },
       message: {
          en: 'You can use generics in functions to infer types based on what you call your function with.',
-         de: 'Du kannst Generics in Funktionen verwenden, um Typen basierend auf dem zu inferieren, mit dem du deine Funktion aufrufst.',
+         de: 'Du kannst Generische Plätze in Funktionen verwenden, um Typen basierend auf dem zu inferieren, mit dem du deine Funktion aufrufst.',
       },
       link: 'https://www.typescriptlang.org/docs/handbook/2/generics.html',
       difficulty: 'not-easy',
    },
    'interface-with-generics': {
+      typeName: {
+         en: 'interface-with-generics',
+         de: 'interface-with-generics (Schnittstelle-mit-Generics)',
+      },
       name: {
          en: 'Generics in interfaces',
          de: 'Generics in Schnittstellen',
@@ -673,6 +870,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'interface-with-multiple-generics': {
+      typeName: {
+         en: 'interface-with-multiple-generics',
+         de: 'interface-with-multiple-generics (Schnittstelle-mit-mehreren-Generics)',
+      },
       name: {
          en: 'Multiple generics in types/interfaces',
          de: 'Mehrere Generics in Typen/Schnittstellen',
@@ -686,6 +887,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'mapped-type': {
+      typeName: {
+         en: 'mapped-type',
+         de: 'mapped-type (Abgebildeter-Typ)',
+      },
       name: {
          en: 'Mapped types',
          de: 'Abgebildete Typen',
@@ -698,6 +903,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'multiple-generic-slots-in-functions': {
+      typeName: {
+         en: 'multiple-generic-slots-in-functions',
+         de: 'multiple-generic-slots-in-functions (Mehrere-generische-Plätze-in-Funktionen)',
+      },
       name: {
          en: 'Multiple generics in functions',
          de: 'Mehrere Generics in Funktionen',
@@ -711,6 +920,10 @@ export const tipInfo: TipInfo = {
       difficulty: 'not-easy',
    },
    'remapping-in-mapped-type': {
+      typeName: {
+         en: 'remapping-in-mapped-type',
+         de: 'remapping-in-mapped-type (Umzuordnung-in-einem-Mapped-Typ)',
+      },
       name: {
          en: 'Key remapping via \'as\'',
          de: 'Schlüssel-Remapping mit \'as\'',
