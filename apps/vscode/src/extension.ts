@@ -11,6 +11,7 @@ import { defaultOptions } from './defaultOptions'
 import { initDiagnostics } from './initDiagnostics'
 import { showBeginnerQuestion } from './showBeginnerQuestion'
 import { showTipsQuestion } from './showTipsQuestion'
+import { getCurrentLanguage } from './language'
 
 const languages = [
    'typescript',
@@ -24,7 +25,7 @@ let options = defaultOptions
 function updateOptions() {
    options = {
       ...defaultOptions,
-      ...vscode.workspace.getConfiguration('wizardTypeScript'),
+      ...vscode.workspace.getConfiguration('typeScriptWizard'),
    }
 }
 
@@ -77,6 +78,8 @@ function isTipComplete(tipType: Tip['type']) {
 }
 
 export async function activate(context: vscode.ExtensionContext) {
+   const currentLanguage = getCurrentLanguage()
+
    initDiagnostics(context)
 
    const updateHiddenTips = () => {
@@ -98,14 +101,14 @@ export async function activate(context: vscode.ExtensionContext) {
 
    context.subscriptions.push(
       vscode.commands.registerCommand(
-         'ts-error-translator.dont-show-again',
+         'typescriptWizard.dont-show-again',
          async ({ tip }: { tip: TipType }) => {
-            const humanReadableTip: string | undefined = tipInfo[tip]?.name
+            const humanReadableTip: string | undefined = tipInfo[tip]?.name[currentLanguage] || tipInfo[tip]?.name.en
 
             if (!humanReadableTip)
                return
 
-            const config = vscode.workspace.getConfiguration('wizardTypeScript')
+            const config = vscode.workspace.getConfiguration('typeScriptWizard')
 
             ignoredTips.add(tip)
 
@@ -120,14 +123,14 @@ export async function activate(context: vscode.ExtensionContext) {
          },
       ),
       vscode.commands.registerCommand(
-         'ts-error-translator.show-tip',
+         'typescriptWizard.show-tip',
          async ({ tip }: { tip: TipType }) => {
-            const humanReadableTip: string | undefined = tipInfo[tip]?.name
+            const humanReadableTip: string | undefined = tipInfo[tip]?.name[currentLanguage] || tipInfo[tip]?.name.en
 
             if (!humanReadableTip)
                return
 
-            const config = vscode.workspace.getConfiguration('wizardTypeScript')
+            const config = vscode.workspace.getConfiguration('typeScriptWizard')
 
             ignoredTips.delete(tip)
 
@@ -164,12 +167,14 @@ export async function activate(context: vscode.ExtensionContext) {
             .filter(tipHasNoDepsOrAllDepsCompleted)
             .filter(tip => !isTipComplete(tip.type))
             .map((tip) => {
+               const currentLanguage = getCurrentLanguage()
+               const typeName: string = tipInfo[tip.type]?.typeName[currentLanguage] || tipInfo[tip.type]?.typeName.en || 'Unknown Tip'
                const diagnostic = new vscode.Diagnostic(
                   tip.range,
-                  tip.type,
+                  typeName,
                   vscode.DiagnosticSeverity.Information,
                )
-               diagnostic.source = 'wizard-typescript'
+               diagnostic.source = 'typescript-wizard'
                return diagnostic
             }),
       )
@@ -220,12 +225,23 @@ export async function activate(context: vscode.ExtensionContext) {
                if (!thisTip)
                   return ''
 
+               const learnMoreTexts = {
+                  en: 'Learn More',
+                  de: 'Weitere Informationen',
+               }
+
+               const markAsLearnedTexts = {
+                  en: 'Mark as Learned',
+                  de: 'Als gelernt markieren',
+               }
+
                const mdString = new vscode.MarkdownString(
-            `**${thisTip.name}**\n\n${thisTip.message ? `${thisTip.message}\n\n` : ''
-            }${thisTip.link ? `[Learn More](${thisTip.link}) |` : ''
-            } [Mark as Learned](command:ts-error-translator.dont-show-again?${encodeURIComponent(
-              JSON.stringify({ tip: itemInRange.type }),
-            )})`,
+                  // eslint-disable-next-line no-mixed-operators
+                  `**${thisTip.name[currentLanguage] || thisTip.name.en}**\n\n${thisTip.message[currentLanguage] || thisTip.message.en ? `${thisTip.message[currentLanguage] || thisTip.message.en}\n\n` : ''
+                  }${thisTip.link ? `[${learnMoreTexts[currentLanguage]}](${thisTip.link}) |` : ''
+                  } [${markAsLearnedTexts[currentLanguage]}](command:typescriptWizard.dont-show-again?${encodeURIComponent(
+                     JSON.stringify({ tip: itemInRange.type }),
+                  )})`,
                )
 
                mdString.isTrusted = true
@@ -244,7 +260,7 @@ export async function activate(context: vscode.ExtensionContext) {
          //     }
          //     return ` - ${
          //       thisTip.name
-         //     } | [Show Hints](command:ts-error-translator.show-tip?${encodeURIComponent(
+         //     } | [Show Hints](command:typescriptwizard.show-tip?${encodeURIComponent(
          //       JSON.stringify({ tip: tip.type }),
          //     )})`;
          //   })
@@ -269,7 +285,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
    context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration(async (e) => {
-         if (e.affectsConfiguration('wizardTypeScript'))
+         if (e.affectsConfiguration('typeScriptWizard'))
             updateHiddenTips()
 
          if (vscode.window.activeTextEditor)
