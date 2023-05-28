@@ -20,10 +20,11 @@ import { useTranslation } from 'react-i18next'
 import ReactFlagsSelect from 'react-flags-select'
 import i18n from '../i18n'
 
-export default function Web(props: { error: string; errors: ErrorInfo[] }) {
+export default function Web(props: { error: string; errors: ErrorInfo[]; lang: string }) {
    const router = useRouter()
    const { t } = useTranslation()
 
+   const initialLanguageFlag = props.lang === 'de' ? 'DE' : 'US'
    const [selectedLanguage, setSelectedLanguage] = React.useState(i18n.language === 'de' ? 'DE' : 'US')
    const handleLanguageChange = (countryCode: string) => {
       let language
@@ -237,6 +238,7 @@ export function getServerSideProps(ctx: GetServerSidePropsContext) {
                   }
                }),
             error: decodedError,
+            lang: language,
          },
       }
    }
@@ -244,6 +246,7 @@ export function getServerSideProps(ctx: GetServerSidePropsContext) {
       props: {
          errors: [],
          error: i18n.t('errorText'),
+         lang: language,
       },
    }
 }
