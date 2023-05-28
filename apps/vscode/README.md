@@ -1,17 +1,25 @@
-# Total TypeScript VSCode Extension
+# 🧙‍♂️ TypeScript Wizard VSCode Extension
 
 Learn TypeScript from within your IDE. Get helpful hints on syntax, and get translations of TypeScript's most cryptic errors.
 
-- [Download the VSCode Extension](https://marketplace.visualstudio.com/items?itemName=mattpocock.ts-error-translator)
+- [Download the VSCode Extension](https://marketplace.visualstudio.com/items?itemName=nyxb.typescript-wizard)
 
-## Syntax Guide
+## 📚 Syntax Guide
 
-Get helpful hints on syntax you've never seen before, with direct links to the docs. Once you feel you've got it covered, mark it as learned to hide the hints. Goes all the way from beginner to hyper-advanced.
+Get helpful hints on syntax you've never seen before, with direct links to the docs. Once you feel you've got it covered, mark it as learned to hide the hints. Goes all the way from beginner to hyper-advanced. Error messages are available in multiple languages, including English and German.
 
-<img src="https://raw.githubusercontent.com/mattpocock/ts-error-translator/main/assets/hint-screenshot.png" alt="A TypeScript hint showing in a VSCode document" />
+### :us: English:
+<img src="https://raw.githubusercontent.com/nyxblabs/typescript-wizard/main/assets/hint-screenshot-en.png" alt="A TypeScript hint showing in a VSCode document" />
 
-## Error Translation
+### :de: German:
+<img src="https://raw.githubusercontent.com/nyxblabs/typescript-wizard/main/assets/hint-screenshot-de.png" alt="A TypeScript hint showing in a VSCode document" />
 
-Confused by TypeScript errors? Translate them into human-readable language right in your IDE.
+## 🌐 Error Translation
 
-<img src="https://raw.githubusercontent.com/mattpocock/ts-error-translator/main/assets/error-screenshot.png" alt="An improved error message showing in a VSCode document" />
+Confused by TypeScript errors? Translate them into human-readable language right in your IDE. Error messages are available in multiple languages, including English and German, making it easier to understand and resolve issues.
+
+### English:
+<img src="https://raw.githubusercontent.com/nyxblabs/typescript-wizard/main/assets/error-screenshot-en.png" alt="An improved error message showing in a VSCode document" />
+
+### German:
+<img src="https://raw.githubusercontent.com/nyxblabs/typescript-wizard/main/assets/error-screenshot-de.png" alt="An improved error message showing in a VSCode document" />

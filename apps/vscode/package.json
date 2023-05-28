@@ -1,6 +1,6 @@
 {
-  "name": "@nyxb/wizard-typescript",
-  "displayName": "Wizard TypeScript",
+  "name": "@nyxb/typescript-wizard",
+  "displayName": "TypeScript Wizard",
   "description": "Learn TypeScript in VSCode with a TypeScript error translator and syntax guide.",
   "license": "MIT",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
@@ -12,10 +12,10 @@
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattpocock/ts-error-translator"
+    "url": "https://github.com/nyxblabs/typescript-wizard"
   },
   "bugs": {
-    "url": "https://github.com/mattpocock/ts-error-translator/issues"
+    "url": "https://github.com/nyxblabs/typescript-wizard/issues"
   },
   "galleryBanner": {
     "color": "#fff"
@@ -38,32 +38,41 @@
   "keywords": [
     "typescript"
   ],
-  "publisher": "mattpocock",
+  "publisher": "nyxb",
   "contributes": {
     "configuration": {
-      "title": "Wizard TypeScript",
+      "title": "TypeScript Wizard",
       "properties": {
-        "wizardTypeScript.showFullTranslation": {
+        "typeScriptWizard.showFullTranslation": {
           "type": "boolean",
           "default": false,
           "description": "Show the full translation of the error"
         },
-        "wizardTypeScript.showTLDRTranslation": {
+        "typeScriptWizard.showTLDRTranslation": {
           "type": "boolean",
           "default": true,
           "description": "Show the TL;DR translation of the error"
         },
-        "wizardTypeScript.hideAllTips": {
+        "typeScriptWizard.hideAllTips": {
           "type": "boolean",
           "default": null
         },
-        "wizardTypeScript.hiddenTips": {
+        "typeScriptWizard.hiddenTips": {
           "type": "array",
           "default": []
         },
-        "wizardTypeScript.hideBasicTips": {
+        "typeScriptWizard.hideBasicTips": {
           "type": "boolean",
           "default": null
+        },
+        "typeScriptWizard.language": {
+          "type": "string",
+          "enum": [
+            "en",
+            "de"
+          ],
+          "default": "en",
+          "description": "Change the language of the extension"
         }
       }
     }

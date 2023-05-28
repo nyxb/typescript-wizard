@@ -65,13 +65,13 @@
     "code": "2304"
   },
   "2307": {
-    "body": "TODO\n",
-    "excerpt": "This could be one of two things - either '{0}' doesn't exist on your file system, or I can't find any type declarations for it.",
+    "body": "For instance, consider this code:\n\n```ts\nimport { MyClass } from 'nonexistent-module'\n```\n\nIn this case, I can't find a module named 'nonexistent-module'. I'm confused because I don't know where to look for the definitions of the things you're trying to import.\n\n\nYou could make me happy by either creating the module file, or installing it if it's a package, like so:\n\n```sh\nnpm install nonexistent-module\n```\n\nOr by adding the necessary type declarations if they're missing:\n\n```ts\ndeclare module 'nonexistent-module' {\n   export class MyClass {\n      // ...\n   }\n}\n```\n\nNow I know where to find 'MyClass'. That clears things up!\n",
+    "excerpt": "This could be one of two things - either '{0}' doesn't exist on your file system, or I can't find any corresponding type declarations for it.",
     "code": "2307"
   },
   "2314": {
-    "body": "TODO\n",
-    "excerpt": "It looks like '{0}' requires '{1}' type arguments, which means you need to pass them in via a generic.",
+    "body": "It appears that '{0}' requires '{1}' type argument(s), which means you need to pass them in using a generic.\n\nFor example, consider this code:\n\n```ts\nclass MyArray<T> {\n   // ...\n}\n\nconst arr = new MyArray()\n```\n\nIn this case, the type argument for 'MyArray' is missing. I can't handle this because I don't know what type the elements of 'arr' should be.\n\nYou could make me happy by specifying the type argument, like so:\n\n```ts\nconst arr = new MyArray<number>()\n```\n\nNow I know that 'arr' is a number array. That makes so much more sense!\n",
+    "excerpt": "It appears that '{0}' requires '{1}' type arguments, which means you need to pass them in using a generic.",
     "code": "2314"
   },
   "2322": {
@@ -80,7 +80,7 @@
     "code": "2322"
   },
   "2324": {
-    "body": "",
+    "body": "You haven't passed all the required properties to '{1}' - you've missed out '{0}'.\n\nFor instance, consider this code:\n\n```ts\ninterface MyInterface {\n   prop1: string\n   prop2: number\n}\n\nconst obj: MyInterface = {\n   prop1: 'Hello',\n}\n```\n\nIn this case, 'prop2' is missing in 'obj'. I'm confused because I expect 'obj' to have both 'prop1' and 'prop2'.\n\nYou could make me happy by adding the missing property, like so:\n\n```ts\nconst obj: MyInterface = {\n   prop1: 'Hello',\n   prop2: 42,\n}\n```\n\nNow 'obj' has all the properties I expect. That makes so much more sense!\n",
     "excerpt": "You haven't passed all the required properties to '{1}' - you've missed out '{0}'",
     "code": "2324"
   },
@@ -95,12 +95,12 @@
     "code": "2327"
   },
   "2339": {
-    "body": "TODO\n",
+    "body": "You're trying to access '{0}' on an object that doesn't contain it.\n\nFor example, consider this code:\n\n```ts\ninterface MyInterface {\n  prop1: string;\n}\n\nlet obj: MyInterface = {\n  prop1: \"Hello\",\n};\n\nconsole.log(obj.prop2);\n```\n\nIn this case, 'prop2' does not exist in 'obj'. I'm confused because I don't know which property you're trying to access on 'obj'.\n\nYou could make me happy by accessing a valid property on 'obj', like so:\n\n```ts\nconsole.log(obj.prop1);\n```\n\nNow you're accessing the existing property 'prop1'. That makes much more sense!\n",
     "excerpt": "You're trying to access '{0}' on an object that doesn't contain it.",
     "code": "2339"
   },
   "2344": {
-    "body": "TODO\n",
+    "body": "You're trying to pass in '{0}' into a slot where I can only see that '{1}' can be passed.\n\nFor example, consider this code:\n\n```ts\nfunction processValue<T extends string>(value: T): void {\n  // ...\n}\n\nprocessValue(42);\n```\n\nIn this case, you're trying to pass in a number (42) into a function that expects a string. I'm confused because the function expects a string value, but you're providing a number.\n\nYou could make me happy by passing in a valid string value, like so:\n\n```ts\nprocessValue(\"Hello\");\n```\n\nNow you're passing in a string value that satisfies the constraint. That makes much more sense!\n",
     "excerpt": "You're trying to pass in '{0}' into a slot where I can see only '{1}' can be passed.",
     "code": "2344"
   },
@@ -110,7 +110,7 @@
     "code": "2345"
   },
   "2349": {
-    "body": "You're trying to call something that doesn't appear to be a function. A version of this error might be:\n\n```ts\nconst a = '';\na();\n```\n",
+    "body": "You're trying to call something that doesn't appear to be a function. A version of this error might be:\n\n```ts\nconst a = '';\na();\n```\n\nIn this case, you're trying to call the variable 'a' as a function. I'm confused because 'a' is an empty string and not a function. You can't call an empty string like a function.\n\nYou could make me happy by calling a valid function or ensuring that the variable you're trying to call is actually a function.\n",
     "excerpt": "I can't call this expression because I can't call it like a function.",
     "code": "2349"
   },
@@ -145,7 +145,7 @@
     "code": "2451"
   },
   "2551": {
-    "body": "TODO\n",
+    "body": "You're trying to access '{0}' on an object that doesn't contain it. Did you mean '{2}'?\n\nFor example, consider this code:\n\n```ts\nconst obj = { name: 'John' }\nconsole.log(obj.age)\n```\n\nIn this case, you're trying to access the property 'age' on the 'obj' object, but it doesn't exist. Did you mean to access the 'name' property instead?\n\n```ts\nconsole.log(obj.name)\n```\n\nNow you're accessing the correct property. That makes much more sense!\n",
     "excerpt": "You're trying to access '{0}' on an object that doesn't contain it. Did you mean '{2}'?",
     "code": "2551"
   },
@@ -155,12 +155,12 @@
     "code": "2552"
   },
   "2554": {
-    "body": "TODO\n",
+    "body": "For example, consider the following code:\n\n```ts\nfunction greet(name: string) {\n   console.log(`Hello ${name}`)\n}\n\ngreet('Alice', 25)\n```\n\nIn this case, you're trying to call the `greet` function with two arguments, but it expects only one argument. You should remove the extra argument:\n\n```ts\ngreet('Alice')\n```\n\nNow you're passing the required argument, and the code will work as expected.\n",
     "excerpt": "The function you're trying to call needs {0} arguments, but you're passing {1}.",
     "code": "2554"
   },
   "2571": {
-    "body": "You need to narrow down the type of the variable before accessing its properties or assigning it to a different typed variable. For example:\n\n```ts\nconst foo: unknown = \"bar\";\n\nif (typeof foo === \"string\") { // Now I know 'foo' is of type 'string',\n  const baz: string = foo;     // I can assign it to a typed variable\n  foo.toUpperCase();           // and access its properties\n}\n",
+    "body": "You need to narrow down the type of the variable before accessing its properties or assigning it to a different typed variable. For example:\n\n```ts\nconst foo: unknown = 'bar'\n\nif (typeof foo === 'string') { // Now I know 'foo' is of type 'string',\n   const baz: string = foo // I can assign it to a typed variable\n   foo.toUpperCase() // and access its properties\n}\n",
     "excerpt": "I don't know what type this object is.",
     "code": "2571"
   },
@@ -170,7 +170,7 @@
     "code": "2590"
   },
   "2693": {
-    "body": "I think you meant to assign a type to your declaration. So instead of,\n\n```ts\nclass Person {\n  name: string;\n}\n```\n\nyou wrote this,\n\n```ts\nclass Person {\n  name = string;\n}\n```\n",
+    "body": "I think you meant to assign a type to your declaration. So instead of,\n\n```ts\nclass Person {\n   name: string\n}\n```\n\nyou wrote this,\n\n```ts\nclass Person {\n   name = string\n}\n```\n",
     "excerpt": "I was expecting A as a type declaration but it is being used as a value here.",
     "code": "2693"
   },
@@ -185,27 +185,27 @@
     "code": "2749"
   },
   "2761": {
-    "body": "You cannot use the `new` keyword because type `{0}` is neither a class nor a function constructor. For example:\n\n```ts\ninterface Foo {\n  bar: string;\n}\nfunction test(MyFoo: Foo) {\n  const instance = new MyFoo(\"\");\n}\n```\n\nHere using the `new` keyword is a mistake because the type of `myFoo` parameter is `Foo` which describes an object type. The following examples are valid cases I'd accept:\n\n```ts\nclass Foo { }\ninterface Bar {\n  new(): Record<string, any>\n}\n\nfunction test(MyFoo: typeof Foo, MyBar: Bar) {\n  const instanceOfFoo = new MyFoo()\n  const instanceOfBar = new MyBar()\n}\n```\n",
+    "body": "You cannot use the `new` keyword because type `{0}` is neither a class nor a function constructor. For example:\n\n```ts\ninterface Foo {\n   bar: string\n}\nfunction test(MyFoo: Foo) {\n   const instance = new MyFoo('')\n}\n```\n\nHere using the `new` keyword is a mistake because the type of `myFoo` parameter is `Foo` which describes an object type. The following examples are valid cases I'd accept:\n\n```ts\nclass Foo { }\ninterface Bar {\n   new(): Record<string, any>\n}\n\nfunction test(MyFoo: typeof Foo, MyBar: Bar) {\n   const instanceOfFoo = new MyFoo()\n   const instanceOfBar = new MyBar()\n}\n```\n",
     "excerpt": "Type '{0}' is not a class.",
     "code": "2761"
   },
   "2783": {
-    "body": "I think you need to reorder the object property assignments and move the spread first. When spreading, what comes first is 'overridden' by what comes later. For example, if you have assignments like these:\n\n```ts\nconst foo = {\n  bar: 'A',\n};\n\nconst baz = {\n  bar: 'B',\n  ...foo,\n};\n```\n\nYou can change it to be like this:\n\n```ts\nconst baz = {\n  ...foo,\n  bar: 'B',\n};\n```\n",
+    "body": "I think you need to reorder the object property assignments and move the spread first. When spreading, what comes first is 'overridden' by what comes later. For example, if you have assignments like these:\n\n```ts\nconst foo = {\n   bar: 'A',\n}\n\nconst baz = {\n   bar: 'B',\n   ...foo,\n}\n```\n\nYou can change it to be like this:\n\n```ts\nconst baz = {\n   ...foo,\n   bar: 'B',\n}\n```\n",
     "excerpt": "'{0}' will be overwritten by the spread.",
     "code": "2783"
   },
   "5075": {
-    "body": "TODO\n",
+    "body": "This error occurs when you're trying to assign a type '{0}' to a constrained type '{1}', but the constrained type '{1}' could potentially be instantiated with a different subtype of the constraint '{2}'. In simpler terms, the type you're passing is compatible with the constraint, but it might not cover the full range of possible subtypes allowed by the constraint.\n\nHere's a brief code example to illustrate the issue:\n\n```ts\ntype Constraint<T extends string> = T\n\nfunction processValue<T extends Constraint<'A'>>(value: T) {\n   // ...\n}\n\nconst value = 'B'\nprocessValue(value) // Error: 'string' is assignable to the constraint 'Constraint<\"A\">', but 'Constraint<\"A\">' could be instantiated with a different subtype of constraint 'string'.\n```\n\nIn this example, the `processValue` function expects a value of type `'A'` or a subtype of it. However, we're trying to pass a value of type `'B'`, which is not a valid subtype according to the constraint. The error indicates that the passed type is assignable to the constraint, but the constraint itself could potentially be instantiated with a different subtype, such as `'C'` or `'D'`.\n\nTo resolve this error, you need to ensure that the value you pass satisfies the constraint by being of the correct type or a valid subtype.\n",
     "excerpt": "You're passing a type '{0}' into a slot which is too narrow. It could be as wide as anything assignable to '{2}'.",
     "code": "5075"
   },
   "6133": {
-    "body": "",
+    "body": "I noticed that '{0}' has been declared in your code, but it's never actually used or accessed. This means that you have created a variable or constant, but you never read or utilize its value anywhere in the code.\n\nHaving declared but unused variables can indicate potential issues or unnecessary code. If you don't intend to use the variable, it is recommended to remove it to keep your code clean and avoid any confusion. However, if you do intend to use the variable, make sure to utilize it appropriately at the relevant places in your code to ensure its functionality.\n",
     "excerpt": "I noticed that '{0}' has been declared, but it's never used in the code.",
     "code": "6133"
   },
   "6142": {
-    "body": "TODO\n",
+    "body": "This error occurs when you try to import `.jsx` or `.tsx` files, but the `jsx` setting in your `tsconfig.json` file is not configured correctly.\n\nTo resolve this issue, open your `tsconfig.json` file and ensure that the `jsx` setting is properly set. If you are using React with JSX, the value should be set to `react`. For example:\n\n```json\n{\n  \"compilerOptions\": {\n    \"jsx\": \"react\"\n  }\n}\n```\n\nMake sure to save your changes and rebuild your TypeScript project for the new settings to take effect. After that, you should be able to import `.jsx` or `.tsx` files without any errors.\n",
     "excerpt": "You can't import `.jsx` or `.tsx` files until you set `jsx` in your `tsconfig.json`.",
     "code": "6142"
   },
@@ -215,12 +215,12 @@
     "code": "7006"
   },
   "7057": {
-    "body": "You can do one of two following options:\n\n1. (_Recommended_) Either cast the `yield` value using `as`, or strictly declare the type of the variable\n\n```ts\nfunction* watchTasks() {\n  const taskChannel: ActionChannelEffect = yield actionChannel([\n    //no longer has to infer\n    'task-submit',\n    'task-remove',\n  ]);\n  //...\n}\n```\n\n2. Specify the return type of your generator function for **all** contained `yield` steps\n\n```ts\nfunction* watchTasks(): Generator<ActionChannelEffect, void> {\n  const taskChannel = yield actionChannel([\n    //can now infer here safely\n    'task-submit',\n    'task-remove',\n  ]);\n  //...\n}\n```\n",
+    "body": "You can do one of two following options:\n\n1. (_Recommended_) Either cast the `yield` value using `as`, or strictly declare the type of the variable\n\n```ts\nfunction* watchTasks() {\n   const taskChannel: ActionChannelEffect = yield actionChannel([\n      // no longer has to infer\n      'task-submit',\n      'task-remove',\n   ])\n   // ...\n}\n```\n\n2. Specify the return type of your generator function for **all** contained `yield` steps\n\n```ts\nfunction* watchTasks(): Generator<ActionChannelEffect, void> {\n   const taskChannel = yield actionChannel([\n      // can now infer here safely\n      'task-submit',\n      'task-remove',\n   ])\n   // ...\n}\n```\n",
     "excerpt": "I don't know enough about your generator function's return type to safely infer here.",
     "code": "7057"
   },
   "7061": {
-    "body": "```ts\ntype Keys = 'Foo' | 'Bar';\ntype MyMappedType = {\n  Baz: string; // << static properties\n  [Key in Keys]: string; // << dynamic properties\n}; // 👎\n```\n\nAn interface can only have static properties. You cannot create a mapped type with an interface.\n\n```ts\ntype Keys = 'Foo' | 'Bar';\ninterface MyInterface {\n  [Key in Keys]: string;\n} // 👎\n```\n",
+    "body": "```ts\ntype Keys = 'Foo' | 'Bar'\ninterface MyMappedType {\n   Baz: string // << static properties\n   [Key in Keys]: string // << dynamic properties\n} // 👎\n```\n\nAn interface can only have static properties. You cannot create a mapped type with an interface.\n\n```ts\ntype Keys = 'Foo' | 'Bar'\ninterface MyInterface {\n   [Key in Keys]: string\n} // 👎\n```\n",
     "excerpt": "You're trying to create a mapped type with both static and dynamic properties.",
     "code": "7061"
   },
@@ -230,17 +230,17 @@
     "code": "8016"
   },
   "17004": {
-    "body": "TODO\n",
+    "body": "This error occurs when you try to use JSX syntax but haven't added the `jsx` setting to your `tsconfig.json` file.\n\nTo resolve this issue, open your `tsconfig.json` file and add the `jsx` setting with the appropriate value. If you're using React with JSX, the value should be set to `react`. For example:\n\n```json\n{\n  \"compilerOptions\": {\n    \"jsx\": \"react\"\n  }\n}\n```\n\nSave your changes and rebuild your TypeScript project for the new settings to take effect. After that, you should be able to use JSX without any issues.\n",
     "excerpt": "You can't use JSX yet because you haven't added `jsx` to your `tsconfig.json`.",
     "code": "17004"
   },
   "18004": {
-    "body": "",
-    "excerpt": "You're trying to pass '{0}' as a key AND value to this object using a shorthand. You'll need to declare '{0}' as a variable first.",
+    "body": "You're attempting to use shorthand notation to add '{0}' as both the key and value to this object. However, before doing so, '{0}' needs to be declared as a variable or provided with an initializer. Here's an example of how you can resolve this issue:\n\n```ts\nconst myKey = '{0}'\nconst myObject = {\n   [myKey]: 'Value'\n}\n```\n\nBy declaring '{0}' as a variable first and then using it as the key in the object declaration, you can successfully add it to the object.\n",
+    "excerpt": "You're trying to add '{0}' as a key and value to this object using shorthand notation. However, '{0}' needs to be declared as a variable first.",
     "code": "18004"
   },
   "95050": {
-    "body": "Some of your code is stranded with no way of being executed.\n\nFor example:\n\n```ts\nfunction printAndReturn(text: string){\n  return; \n  console.log(text);\n}\n```\n\nThis function will stop when it returns on the first line, so text will never be printed.\n\n\n",
+    "body": "Some of your code is stranded with no way of being executed.\n\nFor example:\n\n```ts\nfunction printAndReturn(text: string) {\n   return\n   console.log(text)\n}\n```\n\nThis function will stop when it returns on the first line, so text will never be printed.\n\n\n",
     "excerpt": "I've spotted a bit of code that will never be run.",
     "code": "95050"
   }

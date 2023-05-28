@@ -1,0 +1,247 @@
+{
+  "1002": {
+    "body": "Um diesen Fehler zu beheben, prüfen Sie, ob:\n\n- Sie Anführungszeichen (einfach oder doppelt) zum Öffnen und Schließen für Ihren String-Literal haben\n- Sie Ihren String-Literal richtig escaped haben (indem Sie ihn mit `/` voranstellen)\n- Ihr String-Literal nicht über mehrere Zeilen verteilt ist\n\n### Beispiele\n\nIn JavaScript können Sie einen String nicht so über mehrere Zeilen verteilen:\n\n```js\nconst longString = 'Das ist ein sehr langer String, der \n                  über mehrere Zeilen verteilt werden muss, \n                  weil mein Code sonst unlesbar ist.';\n// 👎\n```\n\nVerwenden Sie stattdessen Template-Literals, die in ECMAScript 2015-Umgebungen unterstützt werden:\n\n```js\nconst longString = `Das ist ein sehr langer String, der \n                  über mehrere Zeilen verteilt werden muss, \n                  weil mein Code sonst unlesbar ist.`\n// ✅\n```\n",
+    "excerpt": "Sie haben eine Zeichenkette begonnen (mit einem einfachen oder doppelten Anführungszeichen), aber nicht beendet.",
+    "code": "1002"
+  },
+  "1003": {
+    "body": "Sie verwenden ein Keyword, das erwartet, dass es von einem **Variablen-, Typ-, Interface-, Klassen-, Funktions-** oder **Eigenschafts**namen gefolgt wird, aber an der Stelle, auf die ich zeige, wurde keiner angegeben.\n\nDie folgenden Beispiele sind ungültig:\n\n```ts\nfunction () {}\ntype Foo = (typeof);\nNumber.;\n```\n\nWenn Sie einen gültigen Namen (Identifier) an der Stelle angeben, auf die ich zeige, wird das Problem behoben:\n\n```ts\nfunction bar() {} // Funktionsname nach 'function' hinzugefügt\ntype Foo = (typeof bar) // Variablenname nach 'typeof' hinzugefügt\nNumber.MAX_SAFE_INTEGER // Eigenschaftsname nach '.' hinzugefügt\n```\n",
+    "excerpt": "Ich habe einen Namen erwartet, aber keiner wurde angegeben.",
+    "code": "1003"
+  },
+  "1006": {
+    "body": "Sie können `/// <reference path=\"...\" />` nicht verwenden, um die Datei selbst zu referenzieren.\n",
+    "excerpt": "Sie haben eine Dreifach-Schrägstrich-Referenz in einer Datei, die sich selbst referenziert.",
+    "code": "1006"
+  },
+  "1009": {
+    "body": "Du solltest das abschließende Komma entfernen, auf das ich zeige - sonst werde ich deinen Code nicht verstehen können.\n",
+    "excerpt": "Du hast ein abschließendes Komma hinzugefügt, obwohl du es nicht hinzufügen sollst.",
+    "code": "1009"
+  },
+  "1014": {
+    "body": "Rest-Parameter sagen mir, dass ich alle übrigen Variablen zusammenfassen soll, wie zum Beispiel:\n\n```ts\nfunction doStuff(fruit: string, ...numbers: number[]) {\n   // etwas tun\n}\n\ndoStuff('Banane', 1, 2, 3)\n```\n\nIch werde verwirrt, wenn sie nicht ganz am Ende der Liste stehen, weil ich dann nicht wissen werde, wie viele Variablen ich zusammenfassen soll. Das hier würde mich verwirren:\n\n```ts\nfunction doStuff(...numbers: number[], fruit: string) {\n   // etwas tun\n}\n\ndoStuff(1, 2, 3, 'Banane')\n```\n",
+    "excerpt": "Ein Rest-Parameter muss als letzter in einer Parameterliste stehen.",
+    "code": "1014"
+  },
+  "1091": {
+    "body": "Ich weiß nicht, was ich mit mehreren Variablen machen soll:\n\n```ts\nfor (let var1, var2 in list){\n  // etwas tun\n}\n```\n\nAber ich werde zufrieden sein, wenn du nur eine verwendest:\n\n```ts\nfor (let eigenschaft in list){\n  // etwas tun\n}\n```\n",
+    "excerpt": "In einer 'for...in'-Anweisung ist nur eine einzelne Variablendeklaration erlaubt.",
+    "code": "1091"
+  },
+  "1109": {
+    "body": "An der Stelle, auf die ich zeige, erwarte ich einen Ausdruck, einen Code, der mit einem Wert aufgelöst wird.\n\n### Beispiele\n\n```ts\nimport {} from\n```\n\nIch erwarte einen Ausdruck nach 'from'\n\n```ts\nexport default;\n```\n\nIch erwarte einen Ausdruck nach 'default'\n\n```ts\n1 + ;\n```\n\nIch erwarte einen Ausdruck nach '+'\n\n```ts\n1 >=;\n```\n\nIch erwarte einen Ausdruck nach '>='\n\n```ts\n< 2;\n```\n\nIch erwarte einen Ausdruck vor '<'\n\n```ts\nif () {}\n```\n\nIch erwarte einen Ausdruck zwischen den '()'\n\n```ts\nfor () {}\n```\n\nIch erwarte einen Ausdruck zwischen den '()'\n",
+    "excerpt": "Ich erwarte einen Code, der zu einem Wert aufgelöst wird.",
+    "code": "1109"
+  },
+  "1117": {
+    "body": "Ich erwarte, dass Objekte eindeutige Eigenschaftsnamen haben.\n\nWeil dieses Objekt eine doppelte Eigenschaft hat, weiß ich nicht, wie ich damit umgehen soll:\n\n```ts\nconst dish = {\n   name: 'Spaghetti von Mama',\n   chef: 'Wiz Khalifa',\n   delicious: false,\n   delicious: true,\n}\n```\n\nIch werde wieder zufrieden sein, wenn du das Duplikat entfernst, so wie hier:\n\n```ts\nconst dish = {\n   name: 'Spaghetti von Mama',\n   chef: 'Wiz Khalifa',\n   delicious: true,\n}\n```\n",
+    "excerpt": "Du kannst einer Objektliteral keine mehrfachen Eigenschaften mit demselben Namen hinzufügen.",
+    "code": "1117"
+  },
+  "1155": {
+    "body": "Ich erwarte nicht, dass sich `const`-Variablen nach ihrer Erstellung jemals ändern. \nDaher macht es meiner Meinung nach keinen Sinn, eine ohne anfänglichen Wert zu erstellen.\n\nDas verwirrt mich:\n\n```ts\nconst name: string;\n```\n\nAber das ist in Ordnung:\n\n```ts\nconst name: string = \"Dennis\";\n```\n",
+    "excerpt": "Eine `const`-Variable muss bei ihrer Deklaration einen Wert erhalten.",
+    "code": "1155"
+  },
+  "1163": {
+    "body": "Um `yield` zu verwenden, solltest du deine Funktion in einen Generator umwandeln, indem du einen Asterisk (*) neben dem Funktionsnamen hinzufügst. Zum Beispiel:\n\n```ts\nconst squaredNum = function* (num: number) {\n   yield num * num;\n};\n```\n",
+    "excerpt": "Das Schlüsselwort `yield` kann nur in einer Generatorfunktion verwendet werden.",
+    "code": "1163"
+  },
+  "1208": {
+    "body": "- Wenn du TypeScript nur verwendest, um JavaScript-Code aus TypeScript-Code zu erzeugen, kannst du die compilerOptions.isolatedModules in der tsconfig.json auf false setzen.\n- Weitere Informationen zu 'isolatedModules' findest du [hier](https://www.typescriptlang.org/tsconfig#isolatedModules).\n",
+    "excerpt": "Du hast die 'isolatedModules'-Option gesetzt. Daher müssen alle Implementierungsdateien Module sein (was bedeutet, dass sie irgendeine Form von Import/Export haben müssen). Füge eine Import-, Export- oder leere 'export {}'-Anweisung hinzu, um es zu einem Modul zu machen.",
+    "code": "1208"
+  },
+  "1313": {
+    "body": "Ich weiß nicht, was ich mit so etwas machen soll:\n\n```ts\nif (;){\n  // etwas tun\n}\n```\n\nAber es würde viel mehr Sinn ergeben, wenn du eine Bedingung innerhalb der Klammern hinzufügst:\n\n```ts\nif (name===\"Georgia\"){\n // etwas tun\n}\n```\n",
+    "excerpt": "Der Körper einer 'if'-Anweisung darf nicht leer sein.",
+    "code": "1313"
+  },
+  "2304": {
+    "body": "Ich habe versucht, \n\n```\n{0}\n``` \nin dem Dokument zu finden, aber ich konnte es nirgendwo sehen. Bist du sicher, dass du es importiert/deklariert hast?\n",
+    "excerpt": "Ich kann die von dir zugreifende Variable nicht finden.",
+    "code": "2304"
+  },
+  "2307": {
+    "body": "Sie den unteren Code, in diesem Fall kann ich kein Modul namens 'nonexistent-module' finden. Ich bin verwirrt, weil ich nicht weiß, wo ich die Definitionen der Dinge suchen soll, die du zu importieren versuchst.\n\n```ts\nimport { MyClass } from 'nonexistent-module'\n```\n\nDu könntest mich glücklich machen, indem du entweder die Moduldatei erstellst oder sie installierst, wenn es sich um ein Paket handelt, so etwa:\n\n```sh\nnpm install nonexistent-module\n```\n\nOder indem du die notwendigen Typdeklarationen hinzufügst, wenn sie fehlen:\n\n```ts\ndeclare module 'nonexistent-module' {\n   export class MyClass {\n      // ...\n   }\n}\n```\n\nJetzt weiß ich, wo ich 'MyClass' finden kann. Das klärt die Dinge auf!\n",
+    "excerpt": "Dies kann eine von zwei Möglichkeiten sein - entweder '{0}' existiert nicht auf deinem Dateisystem oder ich kann keine entsprechenden Typhinweise dafür finden.",
+    "code": "2307"
+  },
+  "2314": {
+    "body": "Es sieht so aus, als ob '{0}' {1} Typargument(e) benötigt, was bedeutet, dass du diese als Generikum übergeben musst.\n\nAngenommen, du hast folgenden Code:\n\n```ts\nclass MyArray<T> {\n  // ...\n}\n\nlet arr = new MyArray();\n```\n\nHier fehlt das Typargument für 'MyArray'. Ich kann damit nicht umgehen, weil ich nicht weiß, welchen Typ die Elemente von 'arr' haben sollten.\n\nDu könntest mich glücklich machen, wenn du das Typargument angibst, wie hier:\n\n```ts\nlet arr = new MyArray<number>();\n```\n\nJetzt weiß ich, dass 'arr' eine Zahl ist. So macht es viel mehr Sinn!\n",
+    "excerpt": "It appears that '{0}' requires '{1}' type arguments, which means you need to pass them in using a generic.",
+    "code": "2314"
+  },
+  "2322": {
+    "body": "Du kannst Variablen Typen zuweisen, um mir Hinweise darüber zu geben, welche Arten von Typen in dieser Variablen erlaubt sein sollen. Zum Beispiel:\n\n```ts\nconst num: number = 0;\n```\n\nDas sagt mir, dass `num` immer eine `number` sein wird.\n\nAber manchmal brichst du dieses Versprechen, die du mir gegeben hast. Zum Beispiel:\n\n```ts\nconst num: number = 'einige Zeichenkette';\n```\n\nIn deinem Fall hast du angegeben, dass nur der Typ `{1}` dieser Variable zugewiesen werden kann. Aber du hast mir stattdessen `{0}` übergeben.\n",
+    "excerpt": "Ich habe erwartet, einen Typ A zu erhalten, aber stattdessen hast du B übergeben.",
+    "code": "2322"
+  },
+  "2324": {
+    "body": "Du hast nicht alle erforderlichen Eigenschaften an '{1}' übergeben - du hast '{0}' ausgelassen.\n\nZum Beispiel, betrachte diesen Code:\n\n```ts\ninterface MyInterface {\n   prop1: string\n   prop2: number\n}\n\nconst obj: MyInterface = {\n   prop1: 'Hallo',\n}\n```\n\nIn diesem Fall fehlt 'prop2' in 'obj'. Ich bin verwirrt, weil ich erwarte, dass 'obj' sowohl 'prop1' als auch 'prop2' hat.\n\nDu könntest mich glücklich machen, indem du die fehlende Eigenschaft hinzufügst, so etwa:\n\n```ts\nconst obj: MyInterface = {\n   prop1: 'Hallo',\n   prop2: 42,\n}\n```\n\nJetzt hat 'obj' alle Eigenschaften, die ich erwarte. Das ergibt viel mehr Sinn!\n",
+    "excerpt": "Du hast nicht alle erforderlichen Eigenschaften an '{1}' übergeben - du hast '{0}' ausgelassen",
+    "code": "2324"
+  },
+  "2326": {
+    "body": "Du weist einer Variable einen Wert zu, deren Typ `Foo` dem Typ `Bar` entspricht, aber sie haben beide eine Eigenschaft `{0}`, deren Typ nicht kompatibel zueinander ist. Zum Beispiel:\n\n```ts\ninterface Foo {\n  {0}: string\n}\ninterface Bar {\n  {0}: number\n}\nconst foo: Foo = { {0}: \"\" }\nconst bar: Bar = foo\n```\n\nDie Typen `Foo` und `Bar` sind strukturell gleich, da sie die gleichen Eigenschaften haben. Allerdings sind sie inkompatibel, da der Typ der Eigenschaft `{0}` in `Foo` `string` und in `Bar` `number` ist.\n",
+    "excerpt": "Zwei ähnliche Typen haben eine Eigenschaft '{0}', die unterschiedlich ist und sie daher inkompatibel macht.",
+    "code": "2326"
+  },
+  "2327": {
+    "body": "Die Typen `{1}` und `{2}` haben die gleiche Eigenschaft `{0}`, aber die Eigenschaft `{0}` ist in Typ `{1}` mit `?` markiert, was bedeutet, dass sie optional sein kann und nicht existieren muss.\n\nZum Beispiel gibt die Schnittstelle `{1}` an, dass es eine Eigenschaft `{0}` gibt, die entweder vom Typ `string` sein kann oder nicht im Objekt vorhanden sein darf:\n\n```ts\ninterface {1} {\n  {0}?: string;\n}\ninterface {2} {\n  {0}: string\n}\nconst foo: {1} = {}  // OK: '{0}' existiert nicht in Typ '{1}'\nconst bar: {2} = foo // Fehler: '{0}' muss in Typ '{2}' existieren\n```\n\nÜberlege, das Fragezeichen `?` von der Eigenschaft `{0}` in Typ `{1}` zu entfernen oder das Fragezeichen `?` zur Eigenschaft `{0}` in Typ `{2}` hinzuzufügen.\n",
+    "excerpt": "Die Eigenschaft '{0}' in Typ '{2}' muss existieren.",
+    "code": "2327"
+  },
+  "2339": {
+    "body": "Du versuchst auf '{0}' zuzugreifen, aber das Objekt enthält diese Eigenschaft nicht.\n\nZum Beispiel, betrachte diesen Code:\n\n```ts\ninterface MyInterface {\n  prop1: string;\n}\n\nlet obj: MyInterface = {\n  prop1: \"Hallo\",\n};\n\nconsole.log(obj.prop2);\n```\n\nIn diesem Fall existiert 'prop2' nicht in 'obj'. Ich bin verwirrt, weil ich nicht weiß, welche Eigenschaft du auf 'obj' zugreifen möchtest.\n\nDu könntest mich glücklich machen, indem du eine gültige Eigenschaft auf 'obj' zugreifst, wie hier:\n\n```ts\nconsole.log(obj.prop1);\n```\n\nJetzt greifst du auf die vorhandene Eigenschaft 'prop1' zu. Das ergibt viel mehr Sinn!\n",
+    "excerpt": "Du versuchst, auf '{0}' auf ein Objekt zuzugreifen, das es nicht enthält.",
+    "code": "2339"
+  },
+  "2344": {
+    "body": "Du versuchst '{0}' an einer Stelle zu übergeben, an der ich sehe, dass nur '{1}' übergeben werden kann.\n\nZum Beispiel, betrachte diesen Code:\n\n```ts\nfunction processValue<T extends string>(value: T): void {\n  // ...\n}\n\nprocessValue(42);\n```\n\nIn diesem Fall versuchst du eine Zahl (42) in eine Funktion zu übergeben, die einen String erwartet. Ich bin verwirrt, weil die Funktion einen String-Wert erwartet, aber du eine Zahl bereitstellst.\n\nDu könntest mich glücklich machen, indem du einen gültigen String-Wert übergibst, so etwa:\n\n```ts\nprocessValue(\"Hallo\");\n```\n\nJetzt übergibst du einen String-Wert, der der Einschränkung entspricht. Das ergibt viel mehr Sinn!\n",
+    "excerpt": "Du versuchst '{0}' an einer Stelle zu übergeben, an der ich sehe, dass nur '{1}' übergeben werden kann.",
+    "code": "2344"
+  },
+  "2345": {
+    "body": "Ich habe\n\n```\n{1}\n```\nerwartet,\n\naber habe\n\n```\n{0}\n```\nerhalten.\n",
+    "excerpt": "Ich habe '{1}' erwartet, aber du hast '{0}' übergeben.",
+    "code": "2345"
+  },
+  "2349": {
+    "body": "Du versuchst etwas aufzurufen, das anscheinend keine Funktion ist. Eine Version dieses Fehlers könnte folgendermaßen aussehen:\n\n```ts\nconst a = ''\na()\n```\n\nIn diesem Fall versuchst du, die Variable 'a' als Funktion aufzurufen. Ich bin verwirrt, weil 'a' ein leerer String ist und keine Funktion. Du kannst einen leeren String nicht wie eine Funktion aufrufen.\n\nDu könntest mich glücklich machen, indem du eine gültige Funktion aufrufst oder sicherstellst, dass die Variable, die du aufrufen möchtest, tatsächlich eine Funktion ist.\n",
+    "excerpt": "Ich kann diesen Ausdruck nicht aufrufen, weil ich ihn nicht wie eine Funktion aufrufen kann.",
+    "code": "2349"
+  },
+  "2352": {
+    "body": "Es sieht so aus, als ob du `as` verwendest, um einen Typ in einen anderen zu 'casten'. Dein erster Typ:\n\n```\n{0}\n```\n\npasst nicht zu\n\n```\n{1}\n```\n\nweil es keine ausreichende Überschneidung zwischen ihnen gibt. Das heißt, sie sehen nicht genug wie einander aus.\n\nFalls du das wirklich beabsichtigt hast, solltest du `{0}` zuerst in `unknown` casten. Zum Beispiel, wenn ich `string` in `string[]` casten möchte, müsste ich folgenden Code schreiben:\n\n```ts twoslash\nconst a = 'wow' as unknown as string[];\n```\n",
+    "excerpt": "Du kannst 'as' nicht verwenden, um '{0}' in '{1}' umzuwandeln - sie haben nicht genug gemeinsam.",
+    "code": "2352"
+  },
+  "2353": {
+    "body": "Dieses Objekt:\n\n```\n{1}\n```\n\nenthält diese Eigenschaft nicht:\n\n```\n{0}\n```\n\nAlso übergebe sie nicht!\n",
+    "excerpt": "Du kannst die Eigenschaft '{0}' nicht an das Objekt '{1}' übergeben.",
+    "code": "2353"
+  },
+  "2355": {
+    "body": "```ts\n// 👎\nconst fun = (): string => {\n  doSomething();\n  // Wir geben keinen String zurück! Daher wird dies zu einem Fehler führen.\n};\n```\n\n```js\n// ✅\nconst fun = (): string => {\n  doSomething();\n  return 'fertig';\n};\n```\n",
+    "excerpt": "Du hast den Rückgabetyp der Funktion festgelegt, aber es wird nichts zurückgegeben.",
+    "code": "2355"
+  },
+  "2393": {
+    "body": "Du solltest versuchen, deiner Funktion einen anderen Namen zu geben. Wenn du verschiedene Funktionssignaturen implementieren möchtest, kannst du dich mit Funktionenüberladungen (engl. Function Overloads) beschäftigen. Weitere Informationen dazu findest du in der [TypeScript-Dokumentation zu Funktionen](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads).\n",
+    "excerpt": "Du hast bereits eine Funktion mit demselben Namen deklariert.",
+    "code": "2393"
+  },
+  "2414": {
+    "body": "Anstatt deine Klassen nach TypeScript-Typen zu benennen...\n\n```ts\nclass {0} {\n}\n```\n\n...solltest du deine Klassen einen Namen geben, der kein TypeScript-Typ ist. Schau dir alle Typen in der Dokumentation zu [Alltagstypen (Everyday Types)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) an.\n",
+    "excerpt": "Du kannst der Klasse den Namen '{0}' nicht geben, da dieser von TypeScript geschützt ist.",
+    "code": "2414"
+  },
+  "2451": {
+    "body": "",
+    "excerpt": "'{0}' wurde bereits deklariert - du kannst es nicht erneut deklarieren.",
+    "code": "2451"
+  },
+  "2551": {
+    "body": "Die Eigenschaft '{0}' existiert nicht im Typ '{1}'. Meintest du vielleicht '{2}'?\n\nBeispielhaft betrachte folgenden Code:\n\n```ts\nconst obj = { name: 'John' }\nconsole.log(obj.age)\n```\n\nIn diesem Fall versuchst du auf die Eigenschaft 'age' des Objekts 'obj' zuzugreifen, aber sie existiert nicht. Meintest du vielleicht stattdessen die Eigenschaft 'name'?\n\n```ts\nconsole.log(obj.name)\n```\n\nNun greifst du auf die richtige Eigenschaft zu. Das ergibt viel mehr Sinn!\n",
+    "excerpt": "Du versuchst auf '{0}' zuzugreifen, aber das Objekt enthält diese Eigenschaft nicht. Meintest du vielleicht '{2}'?",
+    "code": "2551"
+  },
+  "2552": {
+    "body": "Das bedeutet, dass du versuchst, auf eine Variable oder Methode zuzugreifen, die ich im aktuellen Gültigkeitsbereich nicht finden kann. Es könnte sich um einen Tippfehler handeln.\n\nÜberprüfe sorgfältig, ob du es korrekt geschrieben hast. Möglicherweise suchst du nach {1}?\n",
+    "excerpt": "Du versuchst auf eine Funktion oder Variable zuzugreifen, die ich im aktuellen Gültigkeitsbereich nicht finden kann.",
+    "code": "2552"
+  },
+  "2554": {
+    "body": "Die Funktion, die du aufrufen möchtest, benötigt {0} Argumente, aber du übergibst {1}.\n\nZum Beispiel sieh dir den folgenden Code an:\n\n```ts\nfunction greet(name: string) {\n   console.log(`Hallo ${name}`)\n}\n\ngreet('Alice', 25)\n```\n\nIn diesem Fall versuchst du die Funktion `greet` mit zwei Argumenten aufzurufen, obwohl sie nur ein Argument erwartet. Du solltest das überflüssige Argument entfernen:\n\n```ts\ngreet('Alice')\n```\n\nNun übergibst du nur das erforderliche Argument und der Code funktioniert wie erwartet.\n",
+    "excerpt": "Die Funktion, die du aufrufen möchtest, benötigt '{0}' Argumente, aber du übergibst '{1}'.",
+    "code": "2554"
+  },
+  "2571": {
+    "body": "Bevor du auf Eigenschaften des Objekts zugreifen oder es einer variablen eines anderen Typs zuweisen kannst, musst du den Typ der Variablen eingrenzen. Zum Beispiel:\n\n```ts\nconst foo: unknown = 'bar'\n\nif (typeof foo === 'string') { // Jetzt weiß ich, dass 'foo' vom Typ 'string' ist,\n   const baz: string = foo // und kann es einer typisierten Variable zuweisen\n   foo.toUpperCase() // und auf seine Eigenschaften zugreifen\n}\n```\n",
+    "excerpt": "Ich weiß nicht, welchen Typ dieses Objekt hat.",
+    "code": "2571"
+  },
+  "2590": {
+    "body": "",
+    "excerpt": "Du hast einen Union-Typ erstellt, der zu komplex für mich ist, um damit umzugehen! 🤯 Ich kann nur 100.000 Kombinationen im selben Union-Typ darstellen, und du hast diese Grenze überschritten.",
+    "code": "2590"
+  },
+  "2693": {
+    "body": "Ich glaube, du hast beabsichtigt, deiner Deklaration einen Typ zuzuweisen. Anstatt\n\n```ts\nclass Person {\n   name: string\n}\n```\n\nhast du dies geschrieben:\n\n```ts\nclass Person {\n   name = string\n}\n```\n\n",
+    "excerpt": "Ich habe erwartet, dass A als Typdeklaration verwendet wird, aber hier wird es als Wert verwendet.",
+    "code": "2693"
+  },
+  "2741": {
+    "body": "Ich kann dabei helfen sicherzustellen, dass Objekte alle richtigen Eigenschaften enthalten. In diesem Fall betrachte ich dieses Objekt:\n\n```\n{2}\n```\n",
+    "excerpt": "Du hast nicht alle erforderlichen Eigenschaften an '{2}' übergeben - '{1}' fehlt die Eigenschaft '{0}'.",
+    "code": "2741"
+  },
+  "2749": {
+    "body": "Du hast...\n\n```\n{0}\n```\n\n...an einer Stelle übergeben, an der ich einen Typ erwarte.\n",
+    "excerpt": "Du versuchst, eine JavaScript-Variable zu verwenden, anstatt einen Typ anzugeben.",
+    "code": "2749"
+  },
+  "2761": {
+    "body": "Du kannst das `new`-Schlüsselwort nicht verwenden, da der Typ `{0}` weder eine Klasse noch ein Funktionskonstruktor ist. Zum Beispiel:\n\n```ts\ninterface Foo {\n   bar: string\n}\nfunction test(MyFoo: Foo) {\n   const instance = new MyFoo('')\n}\n```\n\nHier ist die Verwendung des `new`-Schlüsselworts ein Fehler, da der Typ des Parameters `MyFoo` `Foo` ist, der einen Objekttyp beschreibt. Die folgenden Beispiele sind gültige Fälle, die ich akzeptieren würde:\n\n```ts\nclass Foo { }\ninterface Bar {\n   new(): Record<string, any>\n}\n\nfunction test(MyFoo: typeof Foo, MyBar: Bar) {\n   const instanceOfFoo = new MyFoo()\n   const instanceOfBar = new MyBar()\n}\n```\n",
+    "excerpt": "Der Typ '{0}' ist weder eine Klasse noch ein Funktionskonstruktor.",
+    "code": "2761"
+  },
+  "2783": {
+    "body": "Ich glaube, du musst die Zuweisungen der Objekteigenschaften neu ordnen und den Spread-Operator zuerst platzieren. Beim Verwenden des Spread-Operators wird das, was zuerst kommt, von dem überschrieben, was später kommt. Zum Beispiel, wenn du Zuweisungen wie diese hast:\n\n```ts\nconst foo = {\n   bar: 'A',\n}\n\nconst baz = {\n   bar: 'B',\n   ...foo,\n}\n```\n\nKannst du es folgendermaßen ändern:\n\n```ts\nconst baz = {\n   ...foo,\n   bar: 'B',\n}\n```\n",
+    "excerpt": "'{0}' wird durch die Verwendung des Spread-Operators überschrieben.",
+    "code": "2783"
+  },
+  "5075": {
+    "body": "Dieser Fehler tritt auf, wenn du versuchst, einen Typ '{0}' einem eingeschränkten Typ '{1}' zuzuweisen, aber der eingeschränkte Typ '{1}' möglicherweise mit einem anderen Untertyp der Einschränkung '{2}' instanziiert werden kann. Einfacher ausgedrückt, der Typ, den du übergibst, ist mit der Einschränkung kompatibel, deckt jedoch möglicherweise nicht den gesamten Bereich der möglichen Untertypen ab, die von der Einschränkung erlaubt sind.\n\nHier ist ein kurzes Codebeispiel, um das Problem zu veranschaulichen:\n\n```ts\ntype Constraint<T extends string> = T\n\nfunction processValue<T extends Constraint<'A'>>(value: T) {\n   // ...\n}\n\nconst value = 'B'\nprocessValue(value) // Fehler: 'string' ist der Einschränkung 'Constraint<\"A\">' zuzuweisen, aber 'Constraint<\"A\">' könnte mit einem anderen Untertyp der Einschränkung 'string' instanziiert werden.\n```\n\nIn diesem Beispiel erwartet die Funktion `processValue` einen Wert vom Typ `'A'` oder einem Untertyp davon. Wir versuchen jedoch, einen Wert vom Typ `'B'` zu übergeben, der gemäß der Einschränkung kein gültiger Untertyp ist. Der Fehler zeigt an, dass der übergebene Typ der Einschränkung zugeordnet werden kann, aber die Einschränkung selbst potenziell mit einem anderen Untertyp wie `'C'` oder `'D'` instanziiert werden könnte.\n\nUm diesen Fehler zu beheben, musst du sicherstellen, dass der übergebene Wert die Einschränkung erfüllt, indem er vom richtigen Typ oder einem gültigen Untertyp ist.\n",
+    "excerpt": "Du übergibst einen Typ '{0}' an eine zu eng definierte Stelle. Es könnte so weit sein wie alles, was der Einschränkung '{2}' zugewiesen werden kann.",
+    "code": "5075"
+  },
+  "6133": {
+    "body": "Ich habe festgestellt, dass '{0}' deklariert wurde, aber es wird im Code nicht verwendet. Das bedeutet, dass die Variable oder Konstante erstellt wurde, jedoch nie ausgelesen oder verwendet wird. Dies kann auf einen Fehler oder unnötigen Code hinweisen.\n\nWenn du die Variable oder Konstante nicht verwenden möchtest, kannst du sie einfach entfernen, um den Code sauberer zu gestalten und potenzielle Verwirrungen zu vermeiden. Andernfalls solltest du sicherstellen, dass du die Variable an den entsprechenden Stellen im Code verwendest, um ihre Funktionalität zu gewährleisten.\n",
+    "excerpt": "Ich habe bemerkt, dass '{0}' deklariert wurde, aber es wird im Code nie verwendet.",
+    "code": "6133"
+  },
+  "6142": {
+    "body": "Dieser Fehler tritt auf, wenn du versuchst, `.jsx`- oder `.tsx`-Dateien zu importieren, aber das `jsx`-Flag in deiner `tsconfig.json` nicht richtig konfiguriert ist.\n\nUm dieses Problem zu beheben, öffne deine `tsconfig.json`-Datei und stelle sicher, dass das `jsx`-Flag auf den korrekten Wert gesetzt ist. Wenn du React mit JSX verwendest, sollte der Wert `react` sein. Beispiel:\n\n```json\n{\n  \"compilerOptions\": {\n    \"jsx\": \"react\"\n  }\n}\n```\n\nStelle sicher, dass du deine Änderungen speicherst und baue dein TypeScript-Projekt erneut, damit die neuen Einstellungen wirksam werden. Danach solltest du in der Lage sein, `.jsx`- oder `.tsx`-Dateien ohne Fehler zu importieren.\n",
+    "excerpt": "Du kannst `.jsx`- oder `.tsx`-Dateien nicht importieren, bis du `jsx` in deiner `tsconfig.json` festlegst.",
+    "code": "6142"
+  },
+  "7006": {
+    "body": "Dies ist einer meiner häufigsten Fehler! Du hast wahrscheinlich eine Funktion deklariert, zum Beispiel:\n\n```ts\nfunction meineFunktion({0}) {\n  // Etwas hier drin...\n}\n```\n\nAber im Moment weiß ich nicht, welchen Typ `{0}` haben soll, daher habe ich ihn standardmäßig auf `{1}` gesetzt.\n\nDer Grund, warum dies als Fehler angezeigt wird, ist, dass du in deiner TS-Konfiguration `\"strict\": true` hast.\n",
+    "excerpt": "Ich weiß nicht, welchen Typ '{0}' haben soll, daher habe ich ihn auf '{1}' standardmäßig gesetzt. Deine tsconfig-Datei gibt an, dass hier ein Fehler gemeldet werden soll.",
+    "code": "7006"
+  },
+  "7057": {
+    "body": "Du hast zwei Möglichkeiten:\n\n1. (_Empfohlen_) Entweder verwende `as`, um den `yield`-Wert zu typisieren, oder deklariere den Typ der Variablen explizit:\n\n```ts\nfunction* watchTasks() {\n   const taskChannel: ActionChannelEffect = yield actionChannel([\n      // kein Inferenzproblem mehr\n      'task-submit',\n      'task-remove',\n   ])\n   // ...\n}\n```\n\n2. Gib den Rückgabetyp deiner Generatorfunktion **für alle** enthaltenen `yield`-Schritte an:\n\n```ts\nfunction* watchTasks(): Generator<ActionChannelEffect, void> {\n   const taskChannel = yield actionChannel([\n      // jetzt kann hier sicher inferiert werden\n      'task-submit',\n      'task-remove',\n   ])\n   // ...\n}\n```\n",
+    "excerpt": "Ich weiß nicht genug über den Rückgabetyp deiner Generatorfunktion, um hier sicher zu inferieren.",
+    "code": "7057"
+  },
+  "7061": {
+    "body": "```ts\ntype Keys = 'Foo' | 'Bar'\ninterface MyMappedType {\n   Baz: string // << statische Eigenschaften\n   [Key in Keys]: string // << dynamische Eigenschaften\n} // 👎\n```\n\nEine Schnittstelle kann nur statische Eigenschaften haben. Du kannst keinen abgebildeten Typ mit einer Schnittstelle erstellen.\n\n```ts\ntype Keys = 'Foo' | 'Bar'\ninterface MyInterface {\n   [Key in Keys]: string\n} // 👎\n```\n\nWenn du sowohl statische als auch dynamische Eigenschaften benötigst, könntest du stattdessen eine Kombination aus einem abgebildeten Typ und einer Schnittstelle verwenden:\n\n```ts\ntype Keys = 'Foo' | 'Bar'\ninterface MyInterface {\n   Baz: string // << statische Eigenschaft\n}\n\ntype MyMappedType = MyInterface & {\n   [Key in Keys]: string // << dynamische Eigenschaften\n} // 👍\n```\n\nSo kannst du sowohl statische Eigenschaften als auch dynamische Eigenschaften in einem Typ haben.\n",
+    "excerpt": "Du versuchst, einen abgebildeten Typ mit sowohl statischen als auch dynamischen Eigenschaften zu erstellen.",
+    "code": "7061"
+  },
+  "8016": {
+    "body": "Typzuweisungen wie `myVar as string` sind eine Funktion, die nur in TypeScript verfügbar ist.\n\nUm Typzuweisungen verwenden zu können, solltest du deine JavaScript-Datei in eine TypeScript-Datei umwandeln.\n",
+    "excerpt": "Du kannst Typzuweisungen nicht verwenden, da dies keine TypeScript-Datei ist.",
+    "code": "8016"
+  },
+  "17004": {
+    "body": "Dieser Fehler tritt auf, wenn du JSX verwenden möchtest, aber das `jsx`-Flag noch nicht in deiner `tsconfig.json` konfiguriert hast.\n\nUm dieses Problem zu beheben, öffne deine `tsconfig.json`-Datei und füge das `jsx`-Flag mit dem entsprechenden Wert hinzu. Wenn du React mit JSX verwendest, sollte der Wert auf `react` gesetzt sein. Zum Beispiel:\n\n```json\n{\n  \"compilerOptions\": {\n    \"jsx\": \"react\"\n  }\n}\n```\n\nSpeichere deine Änderungen und baue dein TypeScript-Projekt erneut, damit die neuen Einstellungen wirksam werden. Danach solltest du JSX ohne Fehler verwenden können.\n",
+    "excerpt": "Du kannst JSX noch nicht verwenden, da du `jsx` noch nicht zu deiner `tsconfig.json` hinzugefügt hast.",
+    "code": "17004"
+  },
+  "18004": {
+    "body": "Du versuchst, '{0}' als Schlüssel und Wert mit einer Kurzschreibweise zu diesem Objekt hinzuzufügen. Bevor du dies tun kannst, musst du '{0}' zuerst als Variable deklarieren oder einen Initialwert bereitstellen. Hier ist ein Beispiel, wie du das Problem beheben kannst:\n\n```ts\nconst myKey = '{0}'\nconst myObject = {\n   [myKey]: 'Value'\n}\n```\n\nIndem du '{0}' zuerst als Variable deklarierst und dann als Schlüssel in der Objektdeklaration verwendest, kannst du das Problem lösen.\n",
+    "excerpt": "Du versuchst, '{0}' als Schlüssel UND Wert zu diesem Objekt mit einer Kurzschreibweise hinzuzufügen. Du musst '{0}' zuerst als Variable deklarieren.",
+    "code": "18004"
+  },
+  "95050": {
+    "body": "Ich habe festgestellt, dass du Code hast, der niemals ausgeführt wird. Es ist wichtig, nicht erreichbaren Code zu entfernen, um sicherzustellen, dass dein Programm effizient läuft und mögliche Missverständnisse vermieden werden.\n\nHier ist ein Beispiel, um nicht erreichbaren Code zu veranschaulichen:\n\n```ts\nfunction printAndReturn(text: string) {\n   return\n   console.log(text)\n}\n```\n\nIn diesem Beispiel wird die Anweisung `console.log(text)` nach der `return`-Anweisung niemals ausgeführt, da die Funktion bereits auf der ersten Zeile stoppt und zurückgibt. Daher wird empfohlen, den nicht erreichbaren Code zu entfernen, um etwaige unbeabsichtigte Verhaltensweisen oder Missverständnisse zu vermeiden.\n",
+    "excerpt": "Ich habe Code entdeckt, der niemals ausgeführt wird.",
+    "code": "95050"
+  }
+}
