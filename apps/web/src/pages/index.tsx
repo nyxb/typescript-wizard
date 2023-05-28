@@ -174,14 +174,16 @@ export default function Web(props: { error: string; errors: ErrorInfo[] }) {
                   )}
                   {!error.improvedError && (
                     <>
-                      <h2>{t('translation')}</h2>
+                      <h2 className='text-nice-yellow'>{t('translation')}</h2>
                       <p>
                          {t('notFind')}{' '}
                         <span className='font-semibold'>#{error.code}</span>:
                       </p>
-                      <code>{error.error}</code>
+                            <code className='text-nice-red'>
+                               &quot;{error.error}&quot;
+                            </code>
                       <p>
-                        <a
+                        <a className='text-nice-green'
                            href='https://github.com/nyxblabs/typescript-wizard/blob/main/CONTRIBUTING.md'
                           target='_blank'
                           rel='noreferrer'
