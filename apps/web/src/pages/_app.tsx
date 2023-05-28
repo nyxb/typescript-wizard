@@ -1,8 +1,10 @@
+import React from 'react'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../global.css'
 import '../twoslash-styles.css'
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps }: AppProps) {
    return (
     <>
       <Head>
