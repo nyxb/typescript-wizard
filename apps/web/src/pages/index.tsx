@@ -25,7 +25,8 @@ export default function Web(props: { error: string; errors: ErrorInfo[]; lang: s
    const { t } = useTranslation()
 
    const initialLanguageFlag = props.lang === 'de' ? 'DE' : 'US'
-   const [selectedLanguage, setSelectedLanguage] = React.useState(i18n.language === 'de' ? 'DE' : 'US')
+   const [selectedLanguage, setSelectedLanguage] = React.useState(initialLanguageFlag)
+
    const handleLanguageChange = (countryCode: string) => {
       let language
       switch (countryCode) {
