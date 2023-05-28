@@ -32,6 +32,7 @@
     "next-remote-watch": "^1.0.0",
     "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.12",
+    "prism-react-renderer": "^2.0.4",
     "react-flags-select": "^2.2.3",
     "react-i18next": "^12.3.1",
     "tailwindcss": "^3.0.24",

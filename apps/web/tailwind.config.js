@@ -7,6 +7,7 @@ module.exports = {
             'nice-purple': '#9945FF',
             'nice-yellow': 'hsl(53, 100%, 50%)',
             'nice-red': '#ED4245',
+            'tw-prose-code': 'hsl(53, 100%, 50%)',
          },
       },
    },
