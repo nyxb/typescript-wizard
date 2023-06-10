@@ -3,7 +3,6 @@
   "name": "typescript-wizard",
   "displayName": "TypeScript Wizard",
   "version": "0.0.2",
-  "private": true,
   "description": "Learn TypeScript in VSCode with a TypeScript error translator and syntax guide.",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "license": "MIT",
