@@ -1,15 +1,12 @@
 {
-  "name": "@nyxb/typescript-wizard",
+  "publisher": "nyxb",
+  "name": "typescript-wizard",
   "displayName": "TypeScript Wizard",
-  "description": "Learn TypeScript in VSCode with a TypeScript error translator and syntax guide.",
-  "license": "MIT",
-  "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "version": "0.0.1",
   "private": true,
-  "engines": {
-    "vscode": "^1.50.0"
-  },
-  "icon": "media/icon.png",
+  "description": "Learn TypeScript in VSCode with a TypeScript error translator and syntax guide.",
+  "author": "Dennis Ollhoff <contact@nyxb.xyz>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nyxblabs/typescript-wizard"
@@ -17,13 +14,21 @@
   "bugs": {
     "url": "https://github.com/nyxblabs/typescript-wizard/issues"
   },
-  "galleryBanner": {
-    "color": "#fff"
-  },
+  "keywords": [
+    "typescript"
+  ],
   "categories": [
     "Education",
     "Linters"
   ],
+  "main": "./out/extension.js",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "galleryBanner": {
+    "color": "#fff"
+  },
   "activationEvents": [
     "onLanguage:typescript",
     "onLanguage:typescriptreact",
@@ -33,12 +38,7 @@
     "onLanguage:svelte",
     "onLanguage:astro"
   ],
-  "main": "./out/extension.js",
   "browser": "./out/extension.js",
-  "keywords": [
-    "typescript"
-  ],
-  "publisher": "nyxb",
   "contributes": {
     "configuration": {
       "title": "TypeScript Wizard",
@@ -93,6 +93,7 @@
   },
   "devDependencies": {
     "@nyxb/error-translation-engine": "workspace:*",
+    "@nyxb/tips-parser": "workspace:*",
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.1.0",
     "@types/node": "14.x",
@@ -103,7 +104,6 @@
     "eslint": "^8.41.0",
     "glob": "^7.2.0",
     "mocha": "^9.2.2",
-    "typescript": "^5.0.4",
-    "@nyxb/tips-parser": "workspace:*"
+    "typescript": "^5.0.4"
   }
 }
