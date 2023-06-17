@@ -23,3 +23,5 @@ Confused by TypeScript errors? Translate them into human-readable language right
 
 ### German:
 <img src="https://raw.githubusercontent.com/nyxblabs/typescript-wizard/main/assets/error-screenshot-de.png" alt="An improved error message showing in a VSCode document" />
+
+This extension is based on [Matt Pocock's](https://github.com/mattpocock) [Total TypeScript](https://marketplace.visualstudio.com/items?itemName=mattpocock.ts-error-translator) extension
